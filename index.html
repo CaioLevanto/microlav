@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MicroLav Refrigerações - Conserto de Lava e Seca, Microondas</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "brand-blue": "#4567b7",
+              "brand-green": "#34c759",
+              "brand-orange": "#ff9900",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease;
+      }
+      .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      header {
+        transition: all 0.3s ease;
+      }
+      .service-card {
+        transition: all 0.3s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: #374151;
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-6px, 6px);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-6px, -6px);
+      }
+      .hero-bg {
+        background: linear-gradient(
+          135deg,
+          rgba(69, 103, 183, 0.7) 0%,
+          rgba(52, 199, 89, 0.7) 50%,
+          rgba(255, 153, 0, 0.7) 100%
+        );
+        position: relative;
+      }
+      .hero-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+      .hero-bg > * {
+        position: relative;
+        z-index: 2;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @keyframes shake {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        10% {
+          transform: translate(-2px, 0) rotate(-5deg);
+        }
+        20% {
+          transform: translate(2px, 0) rotate(5deg);
+        }
+        30% {
+          transform: translate(-2px, 0) rotate(-5deg);
+        }
+        40% {
+          transform: translate(2px, 0) rotate(5deg);
+        }
+        50% {
+          transform: translate(-2px, 0) rotate(-5deg);
+        }
+        60% {
+          transform: translate(2px, 0) rotate(5deg);
+        }
+        70% {
+          transform: translate(-2px, 0) rotate(-5deg);
+        }
+        80% {
+          transform: translate(2px, 0) rotate(5deg);
+        }
+        90% {
+          transform: translate(-2px, 0) rotate(-5deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+      }
+
+      .shake {
+        animation: shake 0.6s;
+      }
+    </style>
+  </head>
+  <body class="font-sans text-gray-800 overflow-x-hidden w-full">
+    <header id="header" class="fixed w-full z-50 py-4 bg-transparent">
+      <div
+        class="max-w-7xl mx-auto flex justify-between items-center px-6 w-full"
+      >
+        <h1 class="text-2xl font-bold text-brand-blue">
+          MicroLav Refrigerações
+        </h1>
+        <nav class="hidden md:flex space-x-8 text-lg font-medium">
+          <a href="#inicio" class="hover:text-brand-blue transition-colors"
+            >Início</a
+          >
+          <a href="#servicos" class="hover:text-brand-green transition-colors"
+            >Serviços</a
+          >
+          <a href="#portfolio" class="hover:text-brand-orange transition-colors"
+            >Trabalhos</a
+          >
+          <!-- <a href="#depoimentos" class="hover:text-brand-blue transition-colors"
+            >Depoimentos</a
+          > -->
+          <a href="#contato" class="hover:text-brand-green transition-colors"
+            >Contato</a
+          >
+        </nav>
+        <button id="menu-btn" class="md:hidden hamburger focus:outline-none">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center space-y-8 text-2xl font-medium transform -translate-x-full transition-transform duration-300 w-full"
+    >
+      <button
+        id="close-menu"
+        class="absolute top-6 right-6 text-3xl font-light"
+      >
+        ×
+      </button>
+      <a href="#inicio" class="hover:text-brand-blue transition-colors"
+        >Início</a
+      >
+      <a href="#servicos" class="hover:text-brand-green transition-colors"
+        >Serviços</a
+      >
+      <a href="#portfolio" class="hover:text-brand-orange transition-colors"
+        >Trabalhos</a
+      >
+      <!-- <a href="#depoimentos" class="hover:text-brand-blue transition-colors"
+        >Depoimentos</a
+      > -->
+      <a href="#contato" class="hover:text-brand-green transition-colors"
+        >Contato</a
+      >
+    </div>
+
+    <main class="pt-20 w-full max-w-full overflow-x-hidden">
+      <section
+        id="inicio"
+        class="min-h-screen w-full flex flex-col md:flex-row items-center justify-center hero-bg px-6 text-white"
+      >
+        <div class="w-full md:w-1/2 p-4 reveal text-center md:text-left">
+          <h2 class="text-4xl md:text-6xl font-bold mb-6">
+            Especialistas em Conserto de Eletrodomésticos
+          </h2>
+          <p class="text-lg md:text-2xl mb-8 opacity-90">
+            Consertamos Lava & Seca, Máquinas de Lavar, Secadoras e Microondas
+            com excelência e garantia.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+          >
+            <a
+              href="tel:+5547996752875"
+              class="md:hidden bg-brand-green text-white px-8 py-4 rounded-lg text-lg font-semibold shadow-lg hover:bg-green-600 transition-all transform hover:scale-105"
+              >📞 Ligar Agora</a
+            >
+            <a
+              href="#servicos"
+              class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-brand-blue transition-all"
+              >Nossos Serviços</a
+            >
+          </div>
+        </div>
+        <div
+          class="w-full md:w-1/2 p-4 reveal flex items-center justify-center"
+        >
+          <img
+            src="logo.png"
+            alt="MicroLav Refrigerações"
+            class="w-150 h-auto max-w-full drop-shadow-2xl"
+          />
+        </div>
+      </section>
+
+      <section
+        id="servicos"
+        class="min-h-screen w-full flex flex-col items-center justify-center bg-gray-50 px-6 pt-20 pb-36 relative"
+      >
+        <div class="text-center mb-16 reveal w-full">
+          <h2 class="text-5xl font-bold text-gray-800 mb-4">Nossos Serviços</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Consertos especializados em eletrodomésticos com qualidade e
+            garantia
+          </p>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-6xl mx-auto reveal"
+        >
+          <div
+            class="service-card bg-white rounded-xl shadow-lg p-6 relative flex flex-col"
+          >
+            <div
+              class="w-full h-48 flex items-center justify-center mb-6 overflow-hidden rounded-lg"
+            >
+              <img
+                src="images/lavaseca.png"
+                alt="Lava & Seca"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-center mb-3 text-brand-blue">
+              Lava & Seca
+            </h3>
+            <p class="text-gray-600 text-center text-sm">
+              Conserto completo em máquinas Lava & Seca de todas as marcas
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-white rounded-xl shadow-lg p-6 relative flex flex-col"
+          >
+            <div
+              class="w-full h-48 flex items-center justify-center mb-6 overflow-hidden rounded-lg"
+            >
+              <img
+                src="images/lavaroupa.png"
+                alt="Máquinas Convencionais"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-center mb-3 text-brand-green">
+              Máquinas Convencionais
+            </h3>
+            <p class="text-gray-600 text-center text-sm">
+              Reparo de máquinas de lavar convencionais
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-white rounded-xl shadow-lg p-6 relative flex flex-col"
+          >
+            <div
+              class="w-full h-48 flex items-center justify-center mb-6 overflow-hidden rounded-lg"
+            >
+              <img
+                src="images/secadora.png"
+                alt="Secadoras"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-center mb-3 text-purple-600">
+              Secadoras
+            </h3>
+            <p class="text-gray-600 text-center text-sm">
+              Conserto especializado em secadoras de roupas
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-white rounded-xl shadow-lg p-6 relative flex flex-col"
+          >
+            <div
+              class="w-full h-48 flex items-center justify-center mb-6 overflow-hidden rounded-lg"
+            >
+              <img
+                src="images/microondas.png"
+                alt="Microondas"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-center mb-3 text-brand-orange">
+              Microondas
+            </h3>
+            <p class="text-gray-600 text-center text-sm">
+              Conserto especializado em fornos microondas de todas as marcas
+            </p>
+          </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 py-6 bg-gray-50 reveal">
+          <div class="swiper logosSwiper w-full max-w-6xl mx-auto">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 1
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 2
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 3
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 4
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 5
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 6
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 7
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 8
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 9
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 10
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 11
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                  Logo 12
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="bg-white px-6 py-20">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl font-bold text-gray-800 mb-4">Antes e Depois</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Veja alguns trabalhos realizados
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div
+            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center"
+          >
+            <img
+              src="images/before-interna.jpeg"
+              alt="Antes 1"
+              class="w-full h-64 object-cover"
+            />
+            <img
+              src="images/after-interna.jpeg"
+              alt="Depois 1"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center"
+          >
+            <img
+              src="images/before-lavaseca.jpeg"
+              alt="Antes 2"
+              class="w-full h-64 object-cover"
+            />
+            <img
+              src="images/after-lavaseca.jpeg"
+              alt="Depois 2"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center"
+          >
+            <img
+              src="images/before-resistence.jpeg"
+              alt="Antes 3"
+              class="w-full h-64 object-cover"
+            />
+            <img
+              src="images/after-resistence.jpeg"
+              alt="Depois 3"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+          <div
+            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center"
+          >
+            <img
+              src="images/before-tubo.jpeg"
+              alt="Antes 4"
+              class="w-full h-64 object-cover"
+            />
+            <img
+              src="images/after-tubo.jpeg"
+              alt="Depois 4"
+              class="w-full h-64 object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 
+      <section
+        id="depoimentos"
+        class="min-h-screen w-full flex items-center justify-center bg-gray-50 px-6 py-20"
+      >
+        <div class="max-w-4xl text-center reveal w-full">
+          <h2 class="text-5xl font-bold text-gray-800 mb-12">
+            O que nossos clientes dizem
+          </h2>
+          <div class="bg-white p-12 rounded-2xl shadow-xl">
+            <div
+              class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl"
+            >
+              👨‍💼
+            </div>
+            <blockquote class="text-2xl text-gray-600 italic mb-6">
+              "Excelente serviço! Minha Lava & Seca voltou a funcionar
+              perfeitamente. Recomendo a MicroLav!"
+            </blockquote>
+            <p class="text-lg font-semibold text-gray-800">
+              Maria Santos - Joinville
+            </p>
+          </div>
+        </div>
+      </section> -->
+
+      <section
+        id="contato"
+        class="min-h-screen w-full flex flex-col items-center justify-center bg-brand-blue text-white px-6 py-20"
+      >
+        <div class="max-w-4xl text-center reveal w-full">
+          <h2 class="text-5xl font-bold mb-8">Entre em Contato</h2>
+          <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+            <div class="space-y-6 text-left">
+              <div class="flex items-center space-x-4">
+                <span class="text-2xl">📍</span>
+                <p class="text-lg">Joinville, SC - Atendemos toda a região</p>
+              </div>
+              <div class="flex items-center space-x-4">
+                <span class="text-2xl">🕒</span>
+                <p class="text-lg">
+                  Segunda a Sexta: 08:00 - 18:00<br />Sábado: 08:00 - 12:00
+                </p>
+              </div>
+              <div class="flex items-center space-x-4">
+                <span class="text-2xl">📞</span>
+                <p class="text-lg">(47) 99999-9999</p>
+              </div>
+              <div class="flex items-center space-x-4">
+                <span class="text-2xl">💬</span>
+                <p class="text-lg">WhatsApp para orçamentos</p>
+              </div>
+            </div>
+            <div
+              class="w-full h-64 bg-white/20 rounded-lg flex items-center justify-center text-xl font-bold backdrop-blur-sm"
+            >
+              🔧 Consertos com Garantia
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white text-center py-8 w-full">
+      <p class="text-lg">
+        &copy; 2025 MicroLav Refrigerações. Todos os direitos reservados.
+      </p>
+    </footer>
+
+    <a
+      href="https://wa.me/5547996752875"
+      target="_blank"
+      class="whatsapp-btn fixed bottom-6 right-6 bg-brand-green text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 z-40"
+    >
+      <img class="w-10 h-auto" src="images/whatsapp.png" alt="whatsapp-logo" />
+    </a>
+
+    <script>
+      setInterval(() => {
+        const btn = document.querySelector(".whatsapp-btn");
+        btn.classList.add("shake");
+        setTimeout(() => btn.classList.remove("shake"), 500);
+      }, 4000);
+
+      const header = document.getElementById("header");
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const closeMenu = document.getElementById("close-menu");
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("-translate-x-full");
+        document.body.classList.add("overflow-hidden");
+      });
+      closeMenu.addEventListener("click", () => {
+        mobileMenu.classList.add("-translate-x-full");
+        document.body.classList.remove("overflow-hidden");
+      });
+      document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("-translate-x-full");
+          document.body.classList.remove("overflow-hidden");
+        });
+      });
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("bg-white/95", "backdrop-blur-md", "shadow-lg");
+        } else {
+          header.classList.remove(
+            "bg-white/95",
+            "backdrop-blur-md",
+            "shadow-lg"
+          );
+        }
+      });
+      const reveals = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      reveals.forEach((el) => observer.observe(el));
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      new Swiper(".logosSwiper", {
+        loop: true,
+        slidesPerView: 4,
+        spaceBetween: 20,
+        autoplay: { delay: 0, disableOnInteraction: false },
+        speed: 5500,
+        freeMode: true,
+        freeModeMomentum: false,
+        breakpoints: {
+          320: { slidesPerView: 2 },
+          640: { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
+        },
+      });
+    </script>
+  </body>
+</html>
