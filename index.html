@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MicroLav Refrigerações - Conserto de Lava e Seca, Microondas</title>
+    <title>MicroLav - Conserto de Lava e Seca, Microondas</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -17,6 +17,10 @@
               "brand-blue": "#4567b7",
               "brand-green": "#34c759",
               "brand-orange": "#ff9900",
+            },
+            spacing: {
+              "extra-wide": "0.25rem",
+              "extra-wide-mobile": "0.1rem",
             },
           },
         },
@@ -68,9 +72,9 @@
       .hero-bg {
         background: linear-gradient(
           135deg,
-          rgba(69, 103, 183, 0.7) 0%,
-          rgba(52, 199, 89, 0.7) 50%,
-          rgba(255, 153, 0, 0.7) 100%
+          rgba(69, 103, 183, 0.08) 0%,
+          rgba(52, 199, 89, 0.08) 50%,
+          rgba(255, 153, 0, 0.08) 100%
         );
         position: relative;
       }
@@ -81,7 +85,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.9);
         z-index: 1;
       }
       .hero-bg > * {
@@ -130,6 +134,36 @@
       .shake {
         animation: shake 0.6s;
       }
+
+      .call-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        text-align: center;
+      }
+
+      @media (min-width: 768px) {
+        .call-btn {
+          display: none;
+        }
+      }
+
+      .card-btn {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 2rem);
+      }
+
+      .logo-header {
+        height: 40px;
+        width: auto;
+      }
     </style>
   </head>
   <body class="font-sans text-gray-800 overflow-x-hidden w-full">
@@ -137,12 +171,16 @@
       <div
         class="max-w-7xl mx-auto flex justify-between items-center px-6 w-full"
       >
-        <h1 class="text-2xl font-bold text-brand-blue">
-          MicroLav Refrigerações
-        </h1>
+        <div class="flex items-center space-x-3">
+          <img src="logo.png" alt="MicroLav Logo" class="logo-header" />
+          <h1 class="text-2xl font-bold text-brand-blue">MicroLav</h1>
+        </div>
         <nav class="hidden md:flex space-x-8 text-lg font-medium">
           <a href="#inicio" class="hover:text-brand-blue transition-colors"
             >Início</a
+          >
+          <a href="#sobre" class="hover:text-brand-blue transition-colors"
+            >Sobre nós</a
           >
           <a href="#servicos" class="hover:text-brand-green transition-colors"
             >Serviços</a
@@ -150,9 +188,6 @@
           <a href="#portfolio" class="hover:text-brand-orange transition-colors"
             >Trabalhos</a
           >
-          <!-- <a href="#depoimentos" class="hover:text-brand-blue transition-colors"
-            >Depoimentos</a
-          > -->
           <a href="#contato" class="hover:text-brand-green transition-colors"
             >Contato</a
           >
@@ -176,15 +211,13 @@
       <a href="#inicio" class="hover:text-brand-blue transition-colors"
         >Início</a
       >
+      <a href="#sobre"> Sobre nós </a>
       <a href="#servicos" class="hover:text-brand-green transition-colors"
         >Serviços</a
       >
       <a href="#portfolio" class="hover:text-brand-orange transition-colors"
         >Trabalhos</a
       >
-      <!-- <a href="#depoimentos" class="hover:text-brand-blue transition-colors"
-        >Depoimentos</a
-      > -->
       <a href="#contato" class="hover:text-brand-green transition-colors"
         >Contato</a
       >
@@ -193,197 +226,294 @@
     <main class="pt-20 w-full max-w-full overflow-x-hidden">
       <section
         id="inicio"
-        class="min-h-screen w-full flex flex-col md:flex-row items-center justify-center hero-bg px-6 text-white"
+        class="min-h-screen w-full flex flex-col md:flex-row items-center justify-center px-6 bg-white"
       >
-        <div class="w-full md:w-1/2 p-4 reveal text-center md:text-left">
-          <h2 class="text-4xl md:text-6xl font-bold mb-6">
-            Especialistas em Conserto de Eletrodomésticos
-          </h2>
-          <p class="text-lg md:text-2xl mb-8 opacity-90">
-            Consertamos Lava & Seca, Máquinas de Lavar, Secadoras e Microondas
-            com excelência e garantia.
-          </p>
-          <div
-            class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-          >
-            <a
-              href="tel:+5547996752875"
-              class="md:hidden bg-brand-green text-white px-8 py-4 rounded-lg text-lg font-semibold shadow-lg hover:bg-green-600 transition-all transform hover:scale-105"
-              >📞 Ligar Agora</a
-            >
-            <a
-              href="#servicos"
-              class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-brand-blue transition-all"
-              >Nossos Serviços</a
-            >
-          </div>
-        </div>
         <div
           class="w-full md:w-1/2 p-4 reveal flex items-center justify-center"
         >
           <img
             src="logo.png"
-            alt="MicroLav Refrigerações"
-            class="w-150 h-auto max-w-full drop-shadow-2xl"
+            alt="MicroLav"
+            class="w-full h-auto max-w-2xl drop-shadow-2xl"
           />
+        </div>
+        <div class="w-full md:w-1/2 p-4 reveal text-center md:text-left">
+          <h2
+            class="text-4xl md:text-6xl font-bold mb-6 text-brand-blue md:tracking-extra-wide tracking-extra-wide-mobile leading-tight"
+          >
+            Assistência técnica para eletrodomésticos
+          </h2>
+          <p class="text-lg md:text-xl mb-8 text-gray-700 leading-relaxed">
+            <span class="font-semibold"
+              >Lava & seca, máquina de lavar, secadora e microondas</span
+            >
+            <br />
+            <span>Atendimento rápido • Peças originais • Garantia total</span>
+          </p>
+          <div class="flex justify-center md:justify-start">
+            <a
+              href="#servicos"
+              class="bg-brand-green hover:bg-brand-green/90 text-white px-12 py-6 rounded-xl text-xl font-bold transition-all transform hover:scale-105 shadow-lg"
+              >Conheça nossos serviços</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="sobre"
+        class="min-h-screen w-full flex flex-col md:flex-row items-center justify-center hero-bg px-6 text-gray-800"
+      >
+        <div class="max-w-5xl mx-auto text-center py-20 reveal">
+          <h2 class="text-5xl font-bold mb-8 text-gray-700">
+            Sobre a MicroLav
+          </h2>
+          <div class="grid md:grid-cols-2 gap-12 items-center text-gray-600">
+            <div class="text-left space-y-6">
+              <p class="text-xl leading-relaxed">
+                A <strong class="text-brand-blue">MicroLav</strong> é referência
+                em Joinville e região no conserto de eletrodomésticos. Nossa
+                equipe especializada oferece soluções completas para seus
+                equipamentos.
+              </p>
+              <p class="text-xl leading-relaxed">
+                Trabalhamos apenas com peças originais e oferecemos garantia em
+                todos os nossos serviços. Nossa missão é devolver a
+                funcionalidade aos seus eletrodomésticos com
+                <strong class="text-brand-green">qualidade e confiança</strong>.
+              </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 text-center">
+              <div class="bg-white p-10 rounded-lg shadow-lg">
+                <h3 class="text-3xl font-bold text-brand-blue mb-2">8</h3>
+                <p class="text-gray-600">Marcas parceiras</p>
+              </div>
+              <div class="bg-white p-10 rounded-lg shadow-lg">
+                <h3 class="text-3xl font-bold text-brand-green mb-2">100%</h3>
+                <p class="text-gray-600">Peças de qualidade</p>
+              </div>
+              <div class="bg-white p-10 rounded-lg shadow-lg">
+                <h3 class="text-3xl font-bold text-brand-orange mb-2">★★★★★</h3>
+                <p class="text-gray-600">Atendimento rápido</p>
+              </div>
+              <div class="bg-white p-10 rounded-lg shadow-lg">
+                <h3 class="text-3xl font-bold text-brand-orange mb-2">★★★★★</h3>
+                <p class="text-gray-600">Satisfação de garantida</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section
         id="servicos"
-        class="min-h-screen w-full flex flex-col items-center justify-center bg-gray-50 px-6 pt-20 pb-36 relative"
+        class="min-h-screen w-full flex flex-col items-center justify-center bg-white px-6 pt-20 pb-36 relative"
       >
         <div class="text-center mb-16 reveal w-full">
-          <h2 class="text-5xl font-bold text-gray-800 mb-4">Nossos Serviços</h2>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-            Consertos especializados em eletrodomésticos com qualidade e
-            garantia
-          </p>
+          <h2 class="text-5xl font-bold text-gray-700 mb-4">Nossos serviços</h2>
         </div>
+
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-6xl mx-auto reveal"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 reveal"
         >
           <div
-            class="service-card bg-white rounded-xl shadow-lg p-6 relative flex flex-col"
+            class="bg-white rounded-xl shadow-lg p-6 relative flex flex-col pb-16 overflow-visible"
           >
             <div
-              class="w-full h-48 flex items-center justify-center mb-6 overflow-hidden rounded-lg"
+              class="w-full h-48 flex items-center justify-center mb-6 overflow-visible rounded-lg"
             >
               <img
                 src="images/lavaseca.png"
                 alt="Lava & Seca"
-                class="w-full h-full object-contain"
+                class="w-full h-full object-contain transition-all duration-300 hover:scale-110 hover:-translate-y-3 cursor-pointer relative z-10 hover:z-20"
               />
             </div>
-            <h3 class="text-xl font-bold text-center mb-3 text-brand-blue">
+            <h3 class="text-2xl font-bold text-center mb-3 text-brand-blue">
               Lava & Seca
             </h3>
-            <p class="text-gray-600 text-center text-sm">
+            <p class="text-gray-600 text-center text-sm mb-16">
               Conserto completo em máquinas Lava & Seca de todas as marcas
             </p>
+            <a
+              href="https://wa.me/5547996752875?text=Olá%20bom%20dia%20Microlav%20preciso%20de%20um%20orçamento%20para%20minha%20Lava%26Seca,%20preciso%20de%20mais%20informações"
+              target="_blank"
+              class="card-btn bg-brand-green text-white px-4 py-2 rounded-md text-center text-sm font-semibold hover:bg-brand-green/90 transition"
+            >
+              Solicitar orçamento
+            </a>
           </div>
 
           <div
-            class="service-card bg-white rounded-xl shadow-lg p-6 relative flex flex-col"
+            class="bg-white rounded-xl shadow-lg p-6 relative flex flex-col pb-16 overflow-visible"
           >
             <div
-              class="w-full h-48 flex items-center justify-center mb-6 overflow-hidden rounded-lg"
+              class="w-full h-48 flex items-center justify-center mb-6 overflow-visible rounded-lg"
             >
               <img
                 src="images/lavaroupa.png"
-                alt="Máquinas Convencionais"
-                class="w-full h-full object-contain"
+                alt="Máquina convencional"
+                class="w-full h-full object-contain transition-all duration-300 hover:scale-110 hover:-translate-y-3 cursor-pointer relative z-10 hover:z-20"
               />
             </div>
-            <h3 class="text-xl font-bold text-center mb-3 text-brand-green">
-              Máquinas Convencionais
+            <h3 class="text-2xl font-bold text-center mb-3 text-brand-blue">
+              Máquina convencional
             </h3>
-            <p class="text-gray-600 text-center text-sm">
-              Reparo de máquinas de lavar convencionais
+            <p class="text-gray-600 text-center text-sm mb-16">
+              Manutenção para máquinas convencionais de diversas marcas
             </p>
+            <a
+              href="https://wa.me/5547996752875?text=Olá%20bom%20dia%20Microlav%20preciso%20de%20um%20orçamento%20para%20minha%20Máquina%20de%20lavar,%20preciso%20de%20mais%20informações"
+              target="_blank"
+              class="card-btn bg-brand-green text-white px-4 py-2 rounded-md text-center text-sm font-semibold hover:bg-brand-green/90 transition"
+            >
+              Solicitar orçamento
+            </a>
           </div>
 
           <div
-            class="service-card bg-white rounded-xl shadow-lg p-6 relative flex flex-col"
+            class="bg-white rounded-xl shadow-lg p-6 relative flex flex-col pb-16 overflow-visible"
           >
             <div
-              class="w-full h-48 flex items-center justify-center mb-6 overflow-hidden rounded-lg"
+              class="w-full h-48 flex items-center justify-center mb-6 overflow-visible rounded-lg"
             >
               <img
                 src="images/secadora.png"
-                alt="Secadoras"
-                class="w-full h-full object-contain"
+                alt="Secadora"
+                class="w-full h-full object-contain transition-all duration-300 hover:scale-110 hover:-translate-y-3 cursor-pointer relative z-10 hover:z-20"
               />
             </div>
-            <h3 class="text-xl font-bold text-center mb-3 text-purple-600">
-              Secadoras
+            <h3 class="text-2xl font-bold text-center mb-3 text-brand-blue">
+              Secadora
             </h3>
-            <p class="text-gray-600 text-center text-sm">
-              Conserto especializado em secadoras de roupas
+            <p class="text-gray-600 text-center text-sm mb-16">
+              Reparo rápido e eficientes para secadoras residenciais
             </p>
+            <a
+              href="https://wa.me/5547996752875?text=Olá%20bom%20dia%20Microlav%20preciso%20de%20um%20orçamento%20para%20minha%20Secadora,%20preciso%20de%20mais%20informações"
+              target="_blank"
+              class="card-btn bg-brand-green text-white px-4 py-2 rounded-md text-center text-sm font-semibold hover:bg-brand-green/90 transition"
+            >
+              Solicitar orçamento
+            </a>
           </div>
 
           <div
-            class="service-card bg-white rounded-xl shadow-lg p-6 relative flex flex-col"
+            class="bg-white rounded-xl shadow-lg p-6 relative flex flex-col pb-16 overflow-visible"
           >
             <div
-              class="w-full h-48 flex items-center justify-center mb-6 overflow-hidden rounded-lg"
+              class="w-full h-48 flex items-center justify-center mb-6 overflow-visible rounded-lg"
             >
               <img
                 src="images/microondas.png"
                 alt="Microondas"
-                class="w-full h-full object-contain"
+                class="w-full h-full object-contain transition-all duration-300 hover:scale-110 hover:-translate-y-3 cursor-pointer relative z-10 hover:z-20"
               />
             </div>
-            <h3 class="text-xl font-bold text-center mb-3 text-brand-orange">
+            <h3 class="text-2xl font-bold text-center mb-3 text-brand-blue">
               Microondas
             </h3>
-            <p class="text-gray-600 text-center text-sm">
-              Conserto especializado em fornos microondas de todas as marcas
+            <p class="text-gray-600 text-center text-sm mb-16">
+              Conserto de microondas com peças originais e garantia
             </p>
+            <a
+              href="https://wa.me/5547996752875?text=Olá%20bom%20dia%20Microlav%20preciso%20de%20um%20orçamento%20para%20meu%20Microondas,%20preciso%20de%20mais%20informações"
+              target="_blank"
+              class="card-btn bg-brand-green text-white px-4 py-2 rounded-md text-center text-sm font-semibold hover:bg-brand-green/90 transition"
+            >
+              Solicitar orçamento
+            </a>
           </div>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 py-6 bg-gray-50 reveal">
+
+        <div class="absolute bottom-0 left-0 right-0 py-6 bg-white reveal">
           <div class="swiper logosSwiper w-full mx-auto">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 1
+                <div
+                  class="bg-white p-2 text-center flex items-center justify-center h-24"
+                >
+                  <img
+                    src="images/logos/brastemp.png"
+                    alt="Brastemp"
+                    class="max-h-20 object-contain"
+                  />
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 2
+                <div
+                  class="bg-white p-2 text-center flex items-center justify-center h-24"
+                >
+                  <img
+                    src="images/logos/lg.png"
+                    alt="LG"
+                    class="max-h-20 object-contain"
+                  />
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 3
+                <div
+                  class="bg-white p-2 text-center flex items-center justify-center h-24"
+                >
+                  <img
+                    src="images/logos/electrolux.png"
+                    alt="Electrolux"
+                    class="max-h-48 object-contain"
+                  />
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 4
+                <div
+                  class="bg-white p-2 text-center flex items-center justify-center h-24"
+                >
+                  <img
+                    src="images/logos/philco.png"
+                    alt="Philco"
+                    class="max-h-36 object-contain"
+                  />
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 5
+                <div
+                  class="bg-white p-2 text-center flex items-center justify-center h-24"
+                >
+                  <img
+                    src="images/logos/consul.png"
+                    alt="Consul"
+                    class="max-h-36 object-contain"
+                  />
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 6
+                <div
+                  class="bg-white p-2 text-center flex items-center justify-center h-24"
+                >
+                  <img
+                    src="images/logos/midea.png"
+                    alt="Midea"
+                    class="max-h-28 object-contain"
+                  />
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 7
+                <div
+                  class="bg-white p-2 text-center flex items-center justify-center h-24"
+                >
+                  <img
+                    src="images/logos/panasonic.png"
+                    alt="Panasonic"
+                    class="max-h-48 object-contain"
+                  />
                 </div>
               </div>
               <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 8
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 9
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 10
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 11
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                  Logo 12
+                <div
+                  class="bg-white p-2 text-center flex items-center justify-center h-24"
+                >
+                  <img
+                    src="images/logos/samsung.png"
+                    alt="Samsung"
+                    class="max-h-28 object-contain"
+                  />
                 </div>
               </div>
             </div>
@@ -392,15 +522,15 @@
       </section>
 
       <section id="portfolio" class="bg-white px-6 py-20">
-        <div class="text-center mb-16">
-          <h2 class="text-5xl font-bold text-gray-800 mb-4">Antes e Depois</h2>
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-5xl font-bold text-gray-800 mb-4">Antes e depois</h2>
           <p class="text-xl text-gray-600 max-w-2xl mx-auto">
             Veja alguns trabalhos realizados
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           <div
-            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center"
+            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center reveal"
           >
             <img
               src="images/before-interna.jpeg"
@@ -414,7 +544,7 @@
             />
           </div>
           <div
-            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center"
+            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center reveal"
           >
             <img
               src="images/before-lavaseca.jpeg"
@@ -428,7 +558,7 @@
             />
           </div>
           <div
-            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center"
+            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center reveal"
           >
             <img
               src="images/before-resistence.jpeg"
@@ -442,7 +572,7 @@
             />
           </div>
           <div
-            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center"
+            class="bg-gray-50 rounded-2xl shadow-xl overflow-hidden flex flex-col items-center reveal"
           >
             <img
               src="images/before-tubo.jpeg"
@@ -458,38 +588,14 @@
         </div>
       </section>
 
-      <!-- 
-      <section
-        id="depoimentos"
-        class="min-h-screen w-full flex items-center justify-center bg-gray-50 px-6 py-20"
-      >
-        <div class="max-w-4xl text-center reveal w-full">
-          <h2 class="text-5xl font-bold text-gray-800 mb-12">
-            O que nossos clientes dizem
-          </h2>
-          <div class="bg-white p-12 rounded-2xl shadow-xl">
-            <div
-              class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl"
-            >
-              👨‍💼
-            </div>
-            <blockquote class="text-2xl text-gray-600 italic mb-6">
-              "Excelente serviço! Minha Lava & Seca voltou a funcionar
-              perfeitamente. Recomendo a MicroLav!"
-            </blockquote>
-            <p class="text-lg font-semibold text-gray-800">
-              Maria Santos - Joinville
-            </p>
-          </div>
-        </div>
-      </section> -->
-
       <section
         id="contato"
-        class="min-h-screen w-full flex flex-col items-center justify-center bg-brand-blue text-white px-6 py-20"
+        class="min-h-screen w-full flex flex-col items-center justify-center hero-bg text-gray-800 px-6 py-20"
       >
         <div class="max-w-4xl text-center reveal w-full">
-          <h2 class="text-5xl font-bold mb-8">Entre em Contato</h2>
+          <h2 class="text-5xl font-bold mb-8 text-brand-blue">
+            Entre em contato
+          </h2>
           <div class="grid md:grid-cols-2 gap-12 items-center w-full">
             <div class="space-y-6 text-left">
               <div class="flex items-center space-x-4">
@@ -504,17 +610,20 @@
               </div>
               <div class="flex items-center space-x-4">
                 <span class="text-2xl">📞</span>
-                <p class="text-lg">(47) 99999-9999</p>
-              </div>
-              <div class="flex items-center space-x-4">
-                <span class="text-2xl">💬</span>
-                <p class="text-lg">WhatsApp para orçamentos</p>
+                <p class="text-lg">(47) 99675-2875</p>
               </div>
             </div>
-            <div
-              class="w-full h-64 bg-white/20 rounded-lg flex items-center justify-center text-xl font-bold backdrop-blur-sm"
-            >
-              🔧 Consertos com Garantia
+            <div class="w-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113876.02954180424!2d-48.935913!3d-26.304361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deb0b91bd71527%3A0x8c9be6a1b0ca6e38!2sJoinville%2C%20SC!5e0!3m2!1spt!2sbr!4v1640000000000!5m2!1spt!2sbr"
+                width="100%"
+                height="300"
+                style="border: 0; border-radius: 12px"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              >
+              </iframe>
             </div>
           </div>
         </div>
@@ -522,15 +631,20 @@
     </main>
 
     <footer class="bg-gray-900 text-white text-center py-8 w-full">
-      <p class="text-lg">
-        &copy; 2025 MicroLav Refrigerações. Todos os direitos reservados.
-      </p>
+      <p class="text-lg">&copy; 2025 MicroLav. Todos os direitos reservados.</p>
     </footer>
 
     <a
-      href="https://wa.me/5547996752875"
+      href="tel:+5547996752875"
+      class="call-btn fixed bottom-28 right-6 bg-brand-orange text-white rounded-full shadow-lg hover:bg-blue-700 transition-all transform hover:scale-105 z-40 md:hidden"
+    >
+      📞
+    </a>
+
+    <a
+      href="https://wa.me/5547996752875?text=Olá%20bom%20dia%20Microlav,%20preciso%20de%20um%20orçamento"
       target="_blank"
-      class="whatsapp-btn fixed bottom-6 right-6 bg-brand-green text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 z-40"
+      class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110 z-40"
     >
       <img class="w-10 h-auto" src="images/whatsapp.png" alt="whatsapp-logo" />
     </a>
@@ -581,7 +695,7 @@
             }
           });
         },
-        { threshold: 0.2 }
+        { threshold: 0.3 }
       );
       reveals.forEach((el) => observer.observe(el));
     </script>
@@ -589,16 +703,16 @@
     <script>
       new Swiper(".logosSwiper", {
         loop: true,
-        slidesPerView: 4,
-        spaceBetween: 20,
+        slidesPerView: 5,
+        spaceBetween: 5,
         autoplay: { delay: 0, disableOnInteraction: false },
-        speed: 5500,
-        freeMode: true,
+        speed: 6500,
+        freeMode: false,
         freeModeMomentum: false,
         breakpoints: {
           320: { slidesPerView: 2 },
           640: { slidesPerView: 3 },
-          1024: { slidesPerView: 4 },
+          1024: { slidesPerView: 5 },
         },
       });
     </script>
