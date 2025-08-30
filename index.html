@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MicroLav - Conserto de Lava e Seca, Microondas</title>
+    <title>MicroLav Service</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -44,7 +44,6 @@
         transform: translateY(0);
       }
 
-      /* Transições para dark mode + suave em ambos modos */
       * {
         transition: background-color 0.3s ease, color 0.3s ease,
           border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
@@ -112,7 +111,6 @@
         position: relative;
       }
       .hero-bg::before {
-        /* Camada que “mescla” no modo claro, sem chapar */
         content: "";
         position: absolute;
         inset: 0;
@@ -172,7 +170,6 @@
         scroll-behavior: smooth;
       }
 
-      /* Toggle Switch Styles */
       .theme-toggle {
         position: relative;
         display: inline-block;
@@ -295,7 +292,6 @@
         box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
       }
 
-      /* Badge fixo nos cards de serviço */
       .service-badge {
         position: absolute;
         top: -12px;
@@ -321,7 +317,7 @@
       <div
         class="max-w-7xl mx-auto flex justify-between items-center px-6 w-full"
       >
-        <div class="flex items-center space-x-3">
+        <div class="flex items-center space-x-3 sm:mt-12">
           <img src="logo.png" alt="MicroLav Logo" class="logo-header" />
 		  <div>
 			  <h1 class="text-2xl font-bold text-gray-800 dark:text-white">
@@ -614,7 +610,6 @@
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 reveal max-w-7xl w-full"
         >
-          <!-- Card 1 -->
           <div
             class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 relative flex flex-col pb-20 overflow-visible service-card ring-gradient"
           >
@@ -717,7 +712,6 @@
             </a>
           </div>
 
-          <!-- Card 4 -->
           <div
             class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 relative flex flex-col pb-20 overflow-visible service-card ring-gradient"
           >
@@ -1158,19 +1152,16 @@
 
       btn.addEventListener("click", () => {
         navigator.clipboard.writeText("+5547996752875").then(() => {
-          msg.classList.remove("hidden"); // Exibe a mensagem
-          setTimeout(() => msg.classList.add("hidden"), 2000); // Esconde após 2s
+          msg.classList.remove("hidden");
+          setTimeout(() => msg.classList.add("hidden"), 2000);
         });
       });
-      // Dark Mode Toggle Functionality
       function initThemeToggle() {
         const themeToggle = document.getElementById("theme-toggle-checkbox");
         const themeToggleMobile = document.getElementById(
           "theme-toggle-checkbox-mobile"
         );
         const html = document.documentElement;
-
-        // Check for saved theme preference or default to system preference
         const savedTheme = localStorage.getItem("theme");
         const systemPrefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)"
@@ -1217,7 +1208,6 @@
       }
       document.addEventListener("DOMContentLoaded", initThemeToggle);
 
-      // WhatsApp button shake animation
       setInterval(() => {
         const btn = document.querySelector('a[id="btn-whatsapp"]');
         if (btn) {
@@ -1226,7 +1216,6 @@
         }
       }, 4000);
 
-      // Header scroll effect + menu
       const header = document.getElementById("header");
       const menuBtn = document.getElementById("menu-btn");
       const mobileMenu = document.getElementById("mobile-menu");
@@ -1305,7 +1294,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-      // Carrossel de logos
       new Swiper(".logosSwiper", {
         loop: true,
         slidesPerView: 5,
@@ -1320,8 +1308,6 @@
           1024: { slidesPerView: 5 },
         },
       });
-
-      // Carrossel de trabalhos realizados
       new Swiper(".workSwiper", {
         loop: true,
         slidesPerView: 1,
